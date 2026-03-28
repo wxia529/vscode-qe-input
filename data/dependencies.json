@@ -1,0 +1,377 @@
+{
+  "variables": {
+    "& CONTROL.iprint": {
+      "requires": {
+        "calculation": "'md'"
+      }
+    },
+    "& CONTROL.max_seconds": {
+      "requires": {
+        "restart_mode": "'restart'"
+      }
+    },
+    "& CONTROL.startingpot": {
+      "requires": {
+        "restart_mode": "'restart'"
+      }
+    },
+    "& CONTROL.startingwfc": {
+      "requires": {
+        "restart_mode": "'restart'"
+      }
+    },
+    "& SYSTEM.ibrav": {
+      "requires": {},
+      "implies": {
+        "celldm": "required if ibrav != 0"
+      }
+    },
+    "& SYSTEM.celldm(i), i=1,6": {
+      "requires": {}
+    },
+    "& SYSTEM.A, B, C, cosAB, cosAC, cosBC": {
+      "requires": {}
+    },
+    "& SYSTEM.nat": {
+      "requires": {}
+    },
+    "& SYSTEM.nr1s, nr2s, nr3s": {
+      "requires": {}
+    },
+    "& SYSTEM.esm_bc": {
+      "requires": {
+        "assume_isolated": "'esm'"
+      }
+    },
+    "& SYSTEM.esm_w": {
+      "requires": {
+        "assume_isolated": "'esm'"
+      }
+    },
+    "& SYSTEM.esm_efield": {
+      "requires": {
+        "assume_isolated": "'esm'"
+      }
+    },
+    "& SYSTEM.esm_nfit": {
+      "requires": {
+        "assume_isolated": "'esm'"
+      }
+    },
+    "& SYSTEM.vdw_corr": {
+      "requires": {},
+      "implies": {
+        "dftd3_version": "required if vdw_corr = 'dft-d3'"
+      }
+    },
+    "& SYSTEM.dftd3_version": {
+      "requires": {
+        "vdw_corr": "'dft-d3'"
+      }
+    },
+    "& SYSTEM.dftd3_threebody": {
+      "requires": {
+        "vdw_corr": "'dft-d3'"
+      }
+    },
+    "& SYSTEM.london": {
+      "requires": {},
+      "implies": {
+        "london_c6": "recommended"
+      }
+    },
+    "& SYSTEM.london_c6": {
+      "requires": {
+        "london": ".TRUE."
+      }
+    },
+    "& SYSTEM.london_rvdw": {
+      "requires": {
+        "london": ".TRUE."
+      }
+    },
+    "& SYSTEM.london_s6": {
+      "requires": {
+        "london": ".TRUE."
+      }
+    },
+    "& SYSTEM.xdm": {
+      "requires": {},
+      "implies": {
+        "xdm_holes": "required"
+      }
+    },
+    "& SYSTEM.xdm_holes": {
+      "requires": {
+        "xdm": ".TRUE."
+      }
+    },
+    "& SYSTEM.nspin": {
+      "requires": {},
+      "implies": {
+        "starting_magnetization": "required if nspin = 2"
+      }
+    },
+    "& SYSTEM.starting_magnetization": {
+      "requires": {
+        "nspin": "2"
+      }
+    },
+    "& SYSTEM.constrained_magnetization": {
+      "requires": {
+        "nspin": "2"
+      }
+    },
+    "& SYSTEM.angle1": {
+      "requires": {
+        "noncolin": ".TRUE."
+      }
+    },
+    "& SYSTEM.angle2": {
+      "requires": {
+        "noncolin": ".TRUE."
+      }
+    },
+    "& SYSTEM.lambda": {
+      "requires": {
+        "noncolin": ".TRUE."
+      }
+    },
+    "& SYSTEM.lspinorb": {
+      "requires": {
+        "noncolin": ".TRUE."
+      }
+    },
+    "& SYSTEM.nbnd": {
+      "requires": {},
+      "implies": {
+        "nbnd": "required for metals or nscf/bands calculations"
+      }
+    },
+    "& SYSTEM.occupations": {
+      "requires": {},
+      "implies": {
+        "smearing": "required if occupations = 'smearing'",
+        "degauss": "required if occupations = 'smearing'"
+      }
+    },
+    "& SYSTEM.smearing": {
+      "requires": {
+        "occupations": "'smearing'"
+      }
+    },
+    "& SYSTEM.degauss": {
+      "requires": {
+        "occupations": "'smearing'"
+      }
+    },
+    "& SYSTEM.tot_magnetization": {
+      "requires": {
+        "nspin": "2"
+      }
+    },
+    "& SYSTEM.lanthanide_sol": {
+      "requires": {
+        "lda_plus_u": ".TRUE."
+      }
+    },
+    "& SYSTEM.Hubbard_U": {
+      "requires": {
+        "lda_plus_u": ".TRUE."
+      }
+    },
+    "& SYSTEM.Hubbard_J": {
+      "requires": {
+        "lda_plus_u": ".TRUE."
+      }
+    },
+    "& SYSTEM.Hubbard_alpha": {
+      "requires": {
+        "lda_plus_u": ".TRUE."
+      }
+    },
+    "& SYSTEM.Hubbard_beta": {
+      "requires": {
+        "lda_plus_u": ".TRUE."
+      }
+    },
+    "& SYSTEM.Hubbard_J0": {
+      "requires": {
+        "lda_plus_u": ".TRUE."
+      }
+    },
+    "& SYSTEM.Hubbard_V": {
+      "requires": {
+        "lda_plus_u_kind": "1"
+      }
+    },
+    "& SYSTEM.utrans": {
+      "requires": {
+        "lda_plus_u": ".TRUE."
+      }
+    },
+    "& SYSTEM.starting_ns": {
+      "requires": {
+        "lda_plus_u": ".TRUE."
+      }
+    },
+    "& SYSTEM.eamp": {
+      "requires": {
+        "tefield": ".TRUE."
+      }
+    },
+    "& SYSTEM.dipfield": {
+      "requires": {
+        "tefield": ".TRUE."
+      }
+    },
+    "& SYSTEM.lelfield": {
+      "requires": {
+        "tefield": ".TRUE."
+      }
+    },
+    "& SYSTEM.lberry": {
+      "requires": {
+        "tefield": ".TRUE."
+      }
+    },
+    "& SYSTEM.gdir": {
+      "requires": {
+        "lberry": ".TRUE."
+      }
+    },
+    "& SYSTEM.nppstr": {
+      "requires": {
+        "lberry": ".TRUE."
+      }
+    },
+    "& SYSTEM.amp_field": {
+      "requires": {
+        "tefield": ".TRUE."
+      }
+    },
+    "& SYSTEM.gauss_amp": {
+      "requires": {
+        "tefield": ".TRUE."
+      }
+    },
+    "& SYSTEM.zgate": {
+      "requires": {
+        "assume_isolated": "'2D'"
+      }
+    },
+    "& SYSTEM.relaxz": {
+      "requires": {
+        "assume_isolated": "'2D'"
+      }
+    },
+    "& SYSTEM.block": {
+      "requires": {
+        "assume_isolated": "'2D'"
+      }
+    },
+    "& SYSTEM.block_1": {
+      "requires": {
+        "assume_isolated": "'2D'"
+      }
+    },
+    "& SYSTEM.block_2": {
+      "requires": {
+        "assume_isolated": "'2D'"
+      }
+    },
+    "& SYSTEM.fcp_mu": {
+      "requires": {
+        "fcp_opt": ".TRUE."
+      }
+    },
+    "& SYSTEM.fcp_mu_conv": {
+      "requires": {
+        "fcp_opt": ".TRUE."
+      }
+    },
+    "& ELECTRONS.diagonalization": {
+      "requires": {},
+      "implies": {
+        "diago_cg_maxiter": "required if diagonalization = 'cg'"
+      }
+    },
+    "& ELECTRONS.diago_cg_maxiter": {
+      "requires": {
+        "diagonalization": "'cg'"
+      }
+    },
+    "& ELECTRONS.diago_david_ndim": {
+      "requires": {
+        "diagonalization": "'david'"
+      }
+    },
+    "& ELECTRONS.diago_ppcg_maxiter": {
+      "requires": {
+        "diagonalization": "'ppcg'"
+      }
+    },
+    "& ELECTRONS.pot_extrapolation": {
+      "requires": {}
+    },
+    "& ELECTRONS.wfc_extrapolation": {
+      "requires": {}
+    },
+    "& ELECTRONS.remove_rigid_rot": {
+      "requires": {}
+    },
+    "& ELECTRONS.fix_z": {
+      "requires": {
+        "assume_isolated": "'2D'"
+      }
+    },
+    "& IONS.deltat": {
+      "requires": {
+        "ion_temperature": "'berendsen'"
+      }
+    },
+    "& IONS.tod": {
+      "requires": {
+        "ion_temperature": "'berendsen'"
+      }
+    },
+    "& IONS.vel_first": {
+      "requires": {
+        "ion_temperature": "'rescaling'"
+      }
+    },
+    "& IONS.nraise": {
+      "requires": {}
+    },
+    "& CELL.press": {
+      "requires": {
+        "calculation": "'vc-md'"
+      }
+    },
+    "& CELL.press_conv": {
+      "requires": {
+        "calculation": "'vc-relax'"
+      }
+    },
+    "& CELL.wim": {
+      "requires": {
+        "cell_dynamics": "'pr'"
+      }
+    },
+    "& CELL.dt": {
+      "requires": {
+        "cell_dynamics": "'pr'"
+      }
+    },
+    "& CELL.p": {
+      "requires": {
+        "cell_dynamics": "'pr'"
+      }
+    },
+    "& CELL.wf": {
+      "requires": {
+        "cell_dynamics": "'pr'"
+      }
+    }
+  }
+}

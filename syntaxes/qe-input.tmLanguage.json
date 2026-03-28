@@ -1,0 +1,178 @@
+{
+  "name": "QE Input",
+  "scopeName": "source.qe-input",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#sections"
+    },
+    {
+      "include": "#cards"
+    },
+    {
+      "include": "#booleans"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#assignments"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.exclamation.qe-input",
+          "match": "!.*$"
+        },
+        {
+          "name": "comment.line.number-sign.qe-input",
+          "match": "#.*$"
+        }
+      ]
+    },
+    "sections": {
+      "patterns": [
+        {
+          "name": "keyword.other.section.qe-input",
+          "match": "(?i)^\\s*&\\s*(CONTROL|SYSTEM|ELECTRONS|IONS|CELL|FCP|RISM)\\b"
+        },
+        {
+          "name": "keyword.other.section.end.qe-input",
+          "match": "^\\s*/\\s*$"
+        }
+      ]
+    },
+    "cards": {
+      "patterns": [
+        {
+          "name": "keyword.other.card.qe-input",
+          "match": "(?i)^\\s*(ATOMIC_POSITIONS|ATOMIC_SPECIES|ATOMIC_VELOCITIES|ATOMIC_FORCES|K_POINTS|ADDITIONAL_K_POINTS|CELL_PARAMETERS|CONSTRAINTS|SOLVENTS)\\b"
+        }
+      ]
+    },
+    "assignments": {
+      "patterns": [
+        {
+          "name": "variable.other.assignment.qe-input",
+          "match": "\\b[A-Za-z_][A-Za-z0-9_]*(?:\\([^\\)]*\\))?\\s*(?==)"
+        },
+        {
+          "name": "keyword.operator.assignment.qe-input",
+          "match": "="
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.single.qe-input",
+          "begin": "'",
+          "end": "'",
+          "patterns": [
+            {
+              "name": "constant.character.escape.qe-input",
+              "match": "''"
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.double.qe-input",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.qe-input",
+              "match": "\"\""
+            }
+          ]
+        }
+      ]
+    },
+    "booleans": {
+      "patterns": [
+        {
+          "name": "constant.language.boolean.qe-input",
+          "match": "(?i)\\.(true|false)\\."
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.scientific.qe-input",
+          "match": "(?i)[+-]?(?:\\d+\\.\\d*|\\.\\d+)(?:[de][+-]?\\d+)?"
+        },
+        {
+          "name": "constant.numeric.integer.qe-input",
+          "match": "\\b[+-]?\\d+\\b"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "support.type.calculation.qe-input",
+          "match": "(?i)='\\s*(scf|nscf|bands|relax|md|vc-relax|vc-md)\\s*'"
+        },
+        {
+          "name": "support.type.occupations.qe-input",
+          "match": "(?i)='\\s*(smearing|tetrahedra|tetrahedra_lin|tetrahedra_opt|fixed|from_input)\\s*'"
+        },
+        {
+          "name": "support.type.smearing.qe-input",
+          "match": "(?i)='\\s*(gaussian|gauss|methfessel-paxton|m-p|mp|marzari-vanderbilt|cold|m-v|mv|fermi-dirac|f-d|fd)\\s*'"
+        },
+        {
+          "name": "support.type.isolation.qe-input",
+          "match": "(?i)='\\s*(none|makov-payne|m-p|mp|martyna-tuckerman|m-t|mt|esm|2D)\\s*'"
+        },
+        {
+          "name": "support.type.dynamics.qe-input",
+          "match": "(?i)='\\s*(bfgs|damp|fire|verlet|velocity-verlet|langevin|langevin-smc|beeman)\\s*'"
+        },
+        {
+          "name": "support.type.thermostat.qe-input",
+          "match": "(?i)='\\s*(rescaling|rescale-v|rescale-T|reduce-T|nose|berendsen|andersen|svr|initial|not_controlled)\\s*'"
+        },
+        {
+          "name": "support.type.vdw.qe-input",
+          "match": "(?i)='\\s*(grimme-d2|Grimme-D2|DFT-D|dft-d|grimme-d3|Grimme-D3|DFT-D3|dft-d3|TS|ts|ts-vdw|ts-vdW|tkatchenko-scheffler|MBD|mbd|many-body-dispersion|mbd_vdw|XDM|xdm)\\s*'"
+        },
+        {
+          "name": "support.type.disk-io.qe-input",
+          "match": "(?i)='\\s*(high|medium|low|nowf|minimal|none)\\s*'"
+        },
+        {
+          "name": "support.type.cell-dofree.qe-input",
+          "match": "(?i)='\\s*(all|ibrav|fixa|fixb|fixc|xy|xz|yz|xyz|shape|volume|2Dxy|2Dshape|epitaxial_ab|epitaxial_ac|epitaxial_bc)\\s*'"
+        },
+        {
+          "name": "support.type.diagonalization.qe-input",
+          "match": "(?i)='\\s*(david|cg|ppcg|paro|ParO|rmm-davidson|rmm-paro)\\s*'"
+        },
+        {
+          "name": "support.type.restart.qe-input",
+          "match": "(?i)='\\s*(from_scratch|restart)\\s*'"
+        },
+        {
+          "name": "support.type.verbosity.qe-input",
+          "match": "(?i)='\\s*(high|low|debug|medium|default|minimal)\\s*'"
+        },
+        {
+          "name": "support.type.bravais.qe-input",
+          "match": "(?i)='\\s*(cubic\\s*[PFI]|cubic\\s*P|cubic\\s*F|cubic\\s*I|hexagonal|trigonal|tetragonal\\s*[PI]|orthorhombic\\s*[PFCI]|monoclinic\\s*P|triclinic|free)\\s*'"
+        }
+      ]
+    }
+  }
+}

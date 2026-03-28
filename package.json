@@ -1,0 +1,120 @@
+{
+  "name": "qe-input-support",
+  "displayName": "QE Input Support",
+  "description": "Quantum ESPRESSO input support",
+  "version": "0.0.1",
+  "publisher": "wxia529",
+  "license": "MIT",
+  "keywords": [
+    "quantum-espresso",
+    "qe",
+    "pwscf",
+    "input",
+    "materials",
+    "physics"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wxia529/vscode-qe-input.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wxia529/vscode-qe-input/issues"
+  },
+  "homepage": "https://github.com/wxia529/vscode-qe-input#readme",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:qe-input"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "qe-input",
+        "aliases": [
+          "QE Input",
+          "Quantum ESPRESSO"
+        ],
+        "extensions": [
+          ".in",
+          ".pwi",
+          ".pw"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "qe-input",
+        "scopeName": "source.qe-input",
+        "path": "./syntaxes/qe-input.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "qe-input",
+        "path": "./data/snippets.json"
+      }
+    ],
+    "configuration": {
+      "title": "QE Support",
+      "properties": {
+        "qeSupport.completion.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable intelligent completion for QE input files"
+        },
+        "qeSupport.diagnostics.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable validation and diagnostics for QE input files"
+        },
+        "qeSupport.hover.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable hover documentation for QE variables"
+        },
+        "qeSupport.dataPath": {
+          "type": "string",
+          "default": "",
+          "description": "Custom path to QE JSON data files (completion.json, constraints.json, etc.). Leave empty to use bundled data."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "qeSupport.reloadData",
+        "title": "Reload QE Data",
+        "category": "QE Support"
+      },
+      {
+        "command": "qeSupport.checkDataStatus",
+        "title": "Check Data Status",
+        "category": "QE Support"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test:unit": "mocha out/test/validation.test.js out/test/parser.test.js out/test/providers.test.js --require ./stub-vscode.js --timeout 10000 --ui tdd",
+    "test": "npm run test:unit && vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.109.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "typescript-eslint": "^8.54.0",
+    "eslint": "^9.39.2",
+    "typescript": "^5.9.3",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
