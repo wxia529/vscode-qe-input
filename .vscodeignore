@@ -5,7 +5,6 @@ src/**
 .github/**
 parse_qe_to_json/**
 eg.in
-out/**
 .gitignore
 .yarnrc
 vsc-extension-quickstart.md
